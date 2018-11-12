@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     type: {
       type: DataTypes.ENUM("user", "artist")
-    }
+    };
   });
   return User;
 };
