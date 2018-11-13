@@ -13,13 +13,14 @@ module.exports = function(sequelize, DataTypes) {
     bodypart: {
       type: DataTypes.STRING,
       allowNull: false
-    },
+    }
   });
+
   Tag.associate = function(models) {
     Tag.belongsTo(models.Picture, {
       foreignKey: {
         allowNull: false
-      };
+      }
     });
   };
   return Tag;

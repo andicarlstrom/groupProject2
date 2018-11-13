@@ -1,15 +1,19 @@
 module.exports = function(sequelize, DataTypes) {
   var Artist = sequelize.define("Artist", {
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     address: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    state: {
+      type: DataTypes.STRING(2),
+      allowNull: false
+    },
+    zip: {
+      type: DataTypes.STRING(5),
       allowNull: false
     },
     pricing: {

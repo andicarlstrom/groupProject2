@@ -12,16 +12,13 @@ module.exports = function(sequelize, DataTypes) {
 
   Picture.associate = function(models) {
     Picture.belongsTo(models.Artist, {
-      foreignKey: {
-        allowNull: false
+     foreignKey:{
+       allowNull:false
+     } 
     });
-    
+
     Picture.hasMany(models.Tag, {
       onDelete: "cascade"
     });
   };
-
-  return Picture;
-};
-
-console.log("Picture");
+  console.log("Pictures");
