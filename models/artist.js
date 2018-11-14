@@ -1,5 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   var Artist = sequelize.define("Artist", {
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     address: {
       type: DataTypes.STRING,
       allowNull: false
@@ -13,17 +17,21 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     zip: {
-      type: DataTypes.STRING(5),
+      type: DataTypes.INTEGER(5),
       allowNull: false
     },
     pricing: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    specialization: {
       type: DataTypes.STRING,
       allowNull: false
     }
   });
 
   Artist.associate = function(models) {
-    Artist.hasOne(models.User);
+    Artist.hasOne(models.Customer);
 
     Artist.hasMany(models.Picture, {
       onDelete: "cascade"
