@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
+  var Customer = sequelize.define("User", {
     firstName: {
       type: DataTypes.STRING,
       allowNull: false
@@ -17,13 +17,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     phone: {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.STRING,
       allowNull: false
     },
     type: {
-      type: DataTypes.ENUM("user", "artist")
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
-  return User;
+  return Customer;
 };
-console.log("User");
+console.log("Customer");
