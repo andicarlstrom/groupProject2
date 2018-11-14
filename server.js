@@ -1,5 +1,6 @@
 require("dotenv").config();
 var express = require("express");
+var session = require("express-session");
 var exphbs = require("express-handlebars");
 
 var db = require("./models");
@@ -11,6 +12,15 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+app.set("trust proxy", 1); // trust first proxy
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  })
+);
 
 // Handlebars
 app.engine(

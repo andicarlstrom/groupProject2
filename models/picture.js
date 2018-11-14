@@ -12,9 +12,9 @@ module.exports = function(sequelize, DataTypes) {
 
   Picture.associate = function(models) {
     Picture.belongsTo(models.Artist, {
-     foreignKey:{
-       allowNull:false
-     } 
+      foreignKey: {
+        allowNull: false
+      }
     });
 
     Picture.hasMany(models.Tag, {
@@ -22,3 +22,4 @@ module.exports = function(sequelize, DataTypes) {
     });
   };
   console.log("Pictures");
+};

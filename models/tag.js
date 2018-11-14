@@ -4,12 +4,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-
-    color: {
-      type: DataTypes.ENUM("color", "black and white"),
-      allowNull: false
-    },
-
     bodypart: {
       type: DataTypes.STRING,
       allowNull: false
@@ -23,6 +17,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
   };
+
   return Tag;
 };
+
 console.log("Tag");
