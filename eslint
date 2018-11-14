@@ -1,0 +1,5 @@
+Script started on Sun Nov 11 12:42:08 2018
+command: models/example.js models/index.js node_modules/ipaddr.js routes/apiRoutes.js routes/htmlRoutes.js test/canary.test.js --quiet
+script: models/example.js: Permission denied
+
+Script done on Sun Nov 11 12:42:08 2018

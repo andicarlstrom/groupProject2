@@ -3,12 +3,28 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+  <!-- Compiled and minified CSS for Materialize for now-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  {{!-- local style sheet --}}
   <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-  <title>Home Page</title>
+  {{!-- jquery link --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  {{!-- local js file --}}
+  <script src="/js/index.js"></script>
+  <title>Tatu</title>
 </head>
 
 <body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo center">Tatu</a>
+      {{!-- <ul id="nav-mobile" class="left hide-on-med-and-down">
+       
+      </ul> --}}
+    </div>
+  </nav>
   {{{body}}}
 </body>
 

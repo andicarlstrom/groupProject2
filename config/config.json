@@ -4,6 +4,7 @@
     "password": "root",
     "database": "tatudb",
     "host": "localhost",
+    "port": 8889,
     "dialect": "mysql"
   },
   "test": {
@@ -11,6 +12,7 @@
     "password": "root",
     "database": "tatudb",
     "host": "localhost",
+    "port": 8889,
     "dialect": "mysql",
     "logging": false
   },

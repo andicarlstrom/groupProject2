@@ -1,33 +1,175 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
+{{!-- New User: create a new handlebars view (or modal) for the forms for profile creation that will be called when
+"New" button is hit. form will the post to either the customer DB or the Artist DB
+it will need to validate that user name doesn't already exist in the DB
+--}}
+
+{{!-- Existing user: use a GET request to pull all users info to verify that there is a matching user name/password
+combo, then will dsiplay the search page or ?? for tattoo artist --}}
+
+{{!-- modal for user login, called when New user button is clicked --}}
+
+{{!-- main page content --}}
+<div class="container">
+  <div class="row">
+    <div class="col s4">
+      {{!-- button for new customer --}}
+      <button data-target="createAccountModal" class="btn modal-trigger" id="newUserBtn">New User</button>
     </div>
+  </div>
+  {{!-- existing user section --}}
+  <div class="row">
+    <h5>Existing User</h5>
+    {{!-- form input section and submit button --}}
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s8">
+          <input id="loginUserName" type="text" class="validate" required="" aria-required="true">
+          <label for="loginUserName">Email</label>
+          <span class="helper-text" data-error="Required"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s8">
+          <input id="loginPassword" type="password" class="validate" required="" aria-required="true">
+          <label for="loginPassword">Password</label>
+          <span class="helper-text" data-error="Required"></span>
+          <p>
+            <label>
+              <input type="checkbox" id="showPassword" class="filled-in" />
+              <span>Show Password</span>
+            </label>
+          </p>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" id="loginSubmit" name="action">Login</button>
+    </form>
   </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+{{!-- modal for new account creation --}}
+<div id="createAccountModal" class="modal">
+  <div class="modal-content">
+    <h4>Create New Account</h4>
+  <div class="row" id="custSelectTypeSection">
+    <h5>What Best Describes You?</h5>
+    {{!-- determines which forms shows --}}
+    <div class="input-field col s12">
+      <select id="userType">
+        <option value="" disabled selected>Choose one...</option>
+        <option value="customer">Customer</option>
+        <option value="artist">Tattoo Artist</option>
+      </select>
+    </div>
+  </div>
+
+  {{!-- this form is for all users to create an account --}}
+  <form id="allUsersInfo">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="firstNameCreate" type="text" class="validate" required="" aria-required="true">
+          <label for="firstNameCreate">First Name</label>
+          <span class="helper-text" data-error="Required"></span>
+        </div>
+        <div class="input-field col s6">
+          <input id="lastNameCreate" type="text" class="validate" required="" aria-required="true">
+          <label for="lastNameCreate">Last Name</label>
+          <span class="helper-text" data-error="Required"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="phoneNumberCreate" type="text" class="validate" required="" aria-required="true">
+          <label for="phoneNumberCreate">Phone Number</label>
+          <span class="helper-text" data-error="Required"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="emailCreate" type="email" class="validate" required="" aria-required="true">
+          <label for="emailCreate">Email</label>
+          <span class="helper-text" data-error="Required"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="passwordCreate" type="text" class="validate" required="" aria-required="true">
+          <label for="passwordCreate">Password</label>
+          <span class="helper-text" data-error="Required"></span>
+        </div>
+      </div>
+    </form>
+    {{!-- form that contains all info for an artist account --}}
+    <form id="artistOnlyInfo">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="locationNameCreate" type="text" class="validate required="" aria-required="true"">
+          <label for="locationNameCreate">Location Name</label>
+          <span class="helper-text" data-error="Required"></span>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="streetCreate" type="text" class="validate" required="" aria-required="true">
+            <label for="streetCreate">Street</label>
+            <span class="helper-text" data-error="Required"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="cityCreate" type="text" class="validate" required="" aria-required="true">
+            <label for="cityCreate">City</label>
+            <span class="helper-text" data-error="Required"></span>
+          </div>
+          <div class="input-field col s2">
+            <input id="stateCreate" type="text" class="validate" required="" aria-required="true">
+            <label for="stateCreate">State</label>
+            <span class="helper-text" data-error="Required"></span>
+          </div>
+          <div class="input-field col s2">
+            <input id="zipCreate" type="number" class="validate" required="" aria-required="true">
+            <label for="zipCreate">Zip</label>
+            <span class="helper-text" data-error="Required"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <select id="specializationCreate">
+              <option value="" disabled selected>Choose one...</option>
+              <option value="3D">3D</option>
+              <option value="abstract">Abstract</option>
+              <option value="amTraditional">American Traditional</option>
+              <option value="biomechanical">Biomechanical</option>
+              <option value="celtic">Celtic</option>
+              <option value="chicano">Chicano</option>
+              <option value="geometric">Geometric</option>
+              <option value="hawaiian">Hawaiian/Maori/Polynesian</option>
+              <option value="hyperRealistic">Hyper Realistic</option>
+              <option value="japanese">Japanese</option>
+              <option value="paintBrushStroke">Paint Brush Stroke</option>
+              <option value="popArt">Pop Art</option>
+              <option value="surrealism">Surrealism</option>
+              <option value="tribal">Tribal</option>
+              <option value="watercolor">Watercolor</option>
+            </select>
+            <label for="specializationCreate">What is your Specialization?</label>
+            {{!-- <input id="specializationCreate" type="text" class="validate" required="" aria-required="true">
+            <span class="helper-text" data-error="Required"></span> --}}
+          </div>
+          <div class="input-field col s12 m6">
+            <select id="pricingCreate">
+              <option value="" disabled selected>Choose one...</option>
+              <option value="perHour">Per Hour</option>
+              <option value="byPiece">By Piece</option>
+            </select>
+            <label for="pricingCreate">What is your Pricing Structure?</label>
+            {{!-- <input id="pricingCreate" type="text" class="validate" required="" aria-required="true">
+            <span class="helper-text" data-error="Required"></span> --}}
+          </div>
+        </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn waves-effect waves-light" type="submit" id="createAcctSubmit" name="action">Create Account</button>
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="createAcctCancel">Cancel</a>
+  </div>
+</div>
