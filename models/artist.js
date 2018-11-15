@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     state: {
-      type: DataTypes.STRING(2),
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     zip: {
@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Artist.associate = function(models) {
-    Artist.hasOne(models.Customer);
+    Artist.belongsTo(models.Customer);
 
     Artist.hasMany(models.Picture, {
       onDelete: "cascade"

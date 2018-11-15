@@ -21,5 +21,6 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: "cascade"
     });
   };
-  console.log("Pictures");
+  return Picture;
 };
+console.log("Pictures");
