@@ -140,7 +140,7 @@ $(document).ready(function() {
     console.log("Customer Info: " + JSON.stringify(customerInfoObj, null, 2));
 
     // post request to send info, will create customer info, then if user type is artist will aslo add artist info to that table
-    $.post("/api/customers", customerInfoObj, function() {
+    $.post("/api/signup", customerInfoObj, function() {
       //if a customer redirect to the customer landing page
       if (userType === "customer") {
         console.log("Customer Information Added");
@@ -264,4 +264,21 @@ $(document).ready(function() {
   // Add event listeners to the submit and delete buttons
   $submitBtn.on("click", handleFormSubmit);
   $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+  ////////////// login functionality
+
+  $("#loginSubmit").on("click", function(event) {
+    event.preventDefault();
+    var loginInfo = {
+      email: $("#loginUserName")
+        .val()
+        .trim(), //TODO: change to loginEmail plz
+      password: $("#loginPassword")
+        .val()
+        .trim()
+    };
+    $.post("/api/login", loginInfo).then(function(res) {
+      console.log(res);
+    });
+  });
 });

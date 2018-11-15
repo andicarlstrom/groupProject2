@@ -9,7 +9,7 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 app.set("trust proxy", 1); // trust first proxy
@@ -18,9 +18,21 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true }
+    cookie: { secure: false }
   })
 );
+//middleware for setting up a user object when anyone first come to the appplication
+function userSetup(req, res, next) {
+  if (!req.session.customer) {
+    req.session.customer = {}
+    req.session.customer.loggedIn = false;
+  }
+  next()
+}
+
+//using middlewhere acrossed the entire application before any route gets hit.
+app.use(userSetup)
+
 
 // Handlebars
 app.engine(
@@ -32,6 +44,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+require("./routes/authRoutes")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
@@ -44,7 +57,7 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
+db.sequelize.sync({syncOptions}).then(function() {
   app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
