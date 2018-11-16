@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Picture = sequelize.define("Picture", {
-    link: {
+    file: {
       type: DataTypes.STRING,
       allowNull: false
     },
