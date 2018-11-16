@@ -83,8 +83,8 @@ module.exports = function(app) {
             req.session.customer = userObj;
             //we update the loggedIn key to have a true value. we can use this value on the fron end to see if the user is logged in or not.
             req.session.customer.loggedIn = true;
-
-            res.status(200).send("Successful login");
+            // res.status(200).send("Successful login");
+            res.json(dbData);
           }
         });
       }
