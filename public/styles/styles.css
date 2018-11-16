@@ -1,1 +1,33 @@
 
+body {
+  background-image: url("/images/tattoo_bgi.jpg");
+  /* background-color: black; */
+  color: white;
+}
+
+.nav-wrapper {
+  background-color: #B61173;
+  width: 100%;
+}
+
+.btn {
+  background-color: #EF6B30;
+}
+
+.btn:hover {
+  background-color: #FF9800;
+}
+
+.container {
+  margin-top: 10%;
+}
+
+h1,
+h5,
+p {
+  text-align: center;
+}
+
+.modalHeader {
+  color: black;
+}

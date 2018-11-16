@@ -1,44 +1,37 @@
-{{!-- New User: create a new handlebars view (or modal) for the forms for profile creation that will be called when
-"New" button is hit. form will the post to either the customer DB or the Artist DB
-it will need to validate that user name doesn't already exist in the DB
---}}
-
-{{!-- Existing user: use a GET request to pull all users info to verify that there is a matching user name/password
-combo, then will dsiplay the search page or ?? for tattoo artist --}}
-
-{{!-- modal for user login, called when New user button is clicked --}}
 
 {{!-- main page content --}}
 <div class="container">
   <div class="row">
-    <div class="col s4">
+    <div class="col s12" id="newCustomerSection">
+      <h5>New Users</h5>
       {{!-- button for new customer --}}
-      <button data-target="createAccountModal" class="btn modal-trigger" id="newUserBtn">New User</button>
+      <p><button data-target="createAccountModal" class="btn modal-trigger" id="newUserBtn">Create Account</button></p>
     </div>
   </div>
+  <div class="divider"></div>
   {{!-- existing user section --}}
   <div class="row">
-    <h5>Existing User</h5>
+    <h5>Existing Users</h5>
     {{!-- form input section and submit button --}}
-    <form class="col s12">
+    <form class="col s12 offset-s2">
       <div class="row">
         <div class="input-field col s8">
-          <input id="loginUserName" type="text" class="validate" required="" aria-required="true">
-          <label for="loginUserName">Email</label>
+          <input id="loginEmail" type="text" class="validate" required="" aria-required="true">
+          <label for="loginEmail">Email</label>
           <span class="helper-text" data-error="Required"></span>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s8">
+        <div class="input-field inline col s6">
           <input id="loginPassword" type="password" class="validate" required="" aria-required="true">
           <label for="loginPassword">Password</label>
           <span class="helper-text" data-error="Required"></span>
-          <p>
-            <label>
-              <input type="checkbox" id="showPassword" class="filled-in" />
-              <span>Show Password</span>
-            </label>
-          </p>
+        </div>
+        <div class="input-field inline col s6">
+          <label>
+            <input type="checkbox" id="showPassword" class="filled-in" />
+            <span>Show Password</span>
+          </label>
         </div>
       </div>
       <button class="btn waves-effect waves-light" type="submit" id="loginSubmit" name="action">Login</button>
@@ -49,13 +42,12 @@ combo, then will dsiplay the search page or ?? for tattoo artist --}}
 {{!-- modal for new account creation --}}
 <div id="createAccountModal" class="modal">
   <div class="modal-content">
-    <h4>Create New Account</h4>
+    <h4 class="modalHeader">Create New Account</h4>
   <div class="row" id="custSelectTypeSection">
-    <h5>What Best Describes You?</h5>
     {{!-- determines which forms shows --}}
     <div class="input-field col s12">
       <select id="userType">
-        <option value="" disabled selected>Choose one...</option>
+        <option value="0" disabled selected>What Best Describes You?</option>
         <option value="customer">Customer</option>
         <option value="artist">Tattoo Artist</option>
       </select>

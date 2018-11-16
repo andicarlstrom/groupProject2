@@ -24,15 +24,14 @@ app.use(
 //middleware for setting up a user object when anyone first come to the appplication
 function userSetup(req, res, next) {
   if (!req.session.customer) {
-    req.session.customer = {}
+    req.session.customer = {};
     req.session.customer.loggedIn = false;
   }
-  next()
+  next();
 }
 
 //using middlewhere acrossed the entire application before any route gets hit.
-app.use(userSetup)
-
+app.use(userSetup);
 
 // Handlebars
 app.engine(
@@ -57,7 +56,7 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync({syncOptions}).then(function() {
+db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
