@@ -121,74 +121,85 @@ module.exports = function(app) {
   // signin enpoint logic
   app.post("/api/signup", function(req, res, next) {
     console.log(req.body);
-    //to store a hased password into the database we need to first salt our password. this will tell bcrypt how many time to pass through the users password to generate the hash
-    bcrypt.genSalt(10, function(err, salt) {
-      //the bcrypt hash method will then
-      bcrypt.hash(req.body.password, salt, function(err, hashedPassword) {
-        // Store hashedPassword in your password DB.
-        req.body.password = hashedPassword;
+    db.Customer.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(function(userCheck){
+      if(!userCheck && typeof userCheck === 'object'){
+        bcrypt.genSalt(10, function(err, salt) {
+          //the bcrypt hash method will then
+          bcrypt.hash(req.body.password, salt, function(err, hashedPassword) {
+            // Store hashedPassword in your password DB.
+            req.body.password = hashedPassword;
 
-        if (req.body.type === "customer") {
-          db.Customer.create(req.body).then(function(dbData) {
-            var userObj = {
-              id: dbData.dataValues.id,
-              firstName: dbData.dataValues.firstName,
-              lastName: dbData.dataValues.lastName,
-              email: dbData.dataValues.email,
-              phone: dbData.dataValues.phone,
-              type: dbData.dataValues.type
-            };
-            req.session.customer = userObj;
-            req.session.customer.loggedIn = true;
-            res.json(dbData);
-          });
-        } else {
-          var customerObj = {
-            type: req.body.type,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            phone: req.body.phone,
-            email: req.body.email,
-            password: req.body.password
-          };
-          console.log(customerObj);
-          db.Customer.create(customerObj).then(function(customerData) {
-            var artistData = {
-              specialization: req.body.artistData.specialization,
-              pricing: req.body.artistData.pricing,
-              location: req.body.artistData.location,
-              address: req.body.artistData.street,
-              city: req.body.artistData.city,
-              state: req.body.artistData.state,
-              zip: req.body.artistData.zip,
-              CustomerId: customerData.dataValues.id
-            };
-            db.Artist.create(artistData).then(function(artistData) {
-              var userObj = {
-                id: customerData.dataValues.id,
-                firstName: customerData.dataValues.firstName,
-                lastName: customerData.dataValues.lastName,
-                email: customerData.dataValues.email,
-                phone: customerData.dataValues.phone,
-                type: customerData.dataValues.type,
-                artistData: {
-                  specialization: artistData.dataValues.specialization,
-                  pricing: artistData.dataValues.pricing,
-                  location: artistData.dataValues.location,
-                  street: artistData.dataValues.street,
-                  city: artistData.dataValues.city,
-                  state: artistData.dataValues.state,
-                  zip: artistData.dataValues.zip
-                }
+            if (req.body.type === "customer") {
+              db.Customer.create(req.body).then(function(dbData) {
+                var userObj = {
+                  id: dbData.dataValues.id,
+                  firstName: dbData.dataValues.firstName,
+                  lastName: dbData.dataValues.lastName,
+                  email: dbData.dataValues.email,
+                  phone: dbData.dataValues.phone,
+                  type: dbData.dataValues.type
+                };
+                req.session.customer = userObj;
+                req.session.customer.loggedIn = true;
+                res.json(dbData);
+              });
+            } else {
+              var customerObj = {
+                type: req.body.type,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                phone: req.body.phone,
+                email: req.body.email,
+                password: req.body.password
               };
-              req.session.customer = userObj;
-              req.session.customer.loggedIn = true;
-              res.json(userObj);
-            });
+              console.log(customerObj);
+              db.Customer.create(customerObj).then(function(customerData) {
+                var artistData = {
+                  specialization: req.body.artistData.specialization,
+                  pricing: req.body.artistData.pricing,
+                  location: req.body.artistData.location,
+                  address: req.body.artistData.street,
+                  city: req.body.artistData.city,
+                  state: req.body.artistData.state,
+                  zip: req.body.artistData.zip,
+                  CustomerId: customerData.dataValues.id
+                };
+                db.Artist.create(artistData).then(function(artistData) {
+                  var userObj = {
+                    id: customerData.dataValues.id,
+                    firstName: customerData.dataValues.firstName,
+                    lastName: customerData.dataValues.lastName,
+                    email: customerData.dataValues.email,
+                    phone: customerData.dataValues.phone,
+                    type: customerData.dataValues.type,
+                    artistData: {
+                      specialization: artistData.dataValues.specialization,
+                      pricing: artistData.dataValues.pricing,
+                      location: artistData.dataValues.location,
+                      street: artistData.dataValues.street,
+                      city: artistData.dataValues.city,
+                      state: artistData.dataValues.state,
+                      zip: artistData.dataValues.zip
+                    }
+                  };
+                  req.session.customer = userObj;
+                  req.session.customer.loggedIn = true;
+                  res.json(userObj);
+                });
+              });
+            }
           });
-        }
-      });
-    });
+        });
+      }else{
+        res.send("sorry suckka that user exists already")
+      }
+    })
+    //to store a hased password into the database we need to first salt our password. this will tell bcrypt how many time to pass through the users password to generate the hash
+
   });
 
   //get user info endpoint via query params
