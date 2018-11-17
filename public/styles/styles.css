@@ -1,25 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
 
 body {
-  background-image: url("/images/tattoo_bgi.jpg");
-  /* background-color: black; */
+  background-image: url("/images/tattooarms_bgi.jpg");
   color: white;
 }
 
-.nav-wrapper {
-  background-color: #B61173;
+nav {
+  /* background-color: #17172A; */
+  background-color: #2A303E;
   width: 100%;
 }
 
+.brand-logo {
+  font-family: 'Pacifico', cursive;
+}
+
+.modal,
+.modal .modal-footer {
+  background-color: grey;
+}
+
 .btn {
-  background-color: #EF6B30;
+  background-color: #344743;
+  /* background-color: #D6916A; */
 }
 
 .btn:hover {
-  background-color: #FF9800;
+  background-color: grey;
 }
 
 .container {
-  margin-top: 10%;
+  margin-top: 7%;
 }
 
 h1,
@@ -28,6 +39,64 @@ p {
   text-align: center;
 }
 
-.modalHeader {
-  color: black;
+/* this is for the forms */
+.input-field>label,
+.btn-flat {
+  color: white;
+}
+
+[type="checkbox"]+span:not(.lever) {
+  padding-left: 30px;
+}
+
+[type="checkbox"].filled-in:not(:checked)+span:not(.lever):after {
+  border: 1px solid white;
+}
+
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+  background-color: #344743;
+  border: #344743;
+}
+
+.select-wrapper input.select-dropdown {
+  border-bottom: 1px solid white;
+  color: white;
+}
+
+.dropdown-content li>span {
+  color: maroon;
+}
+
+/* makes the input lines white as well as the text once input */
+input[type=text]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=password]:not(.browser-default) {
+  border-bottom:1px solid white;
+  color: white;
+}
+
+/* this changes the line color to match the text color (below) and makes the completed font color white */
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly])  {
+  border-bottom: 1px solid maroon;
+  box-shadow: 0 1px 0 0 maroon;
+  /* color: white; */
+}
+
+/* this changes the color of the label's text on the form */
+input[type="text"]:not(.browser-default):focus:not([readonly])+label,
+input[type="password"]:not(.browser-default):focus:not([readonly])+label,
+input[type="email"]:not(.browser-default):focus:not([readonly])+label {
+  color: maroon;
+}
+
+/* adjustments for mobile first */
+@media only screen and (max-width: 992px) {
+  .container {
+    margin-top: 15%;
+  }
+  body {
+    background-image: url("/images/tattooarms_sm_bgi.jpg");
+  }
 }
