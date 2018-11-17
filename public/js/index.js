@@ -210,17 +210,20 @@ $(document).ready(function() {
     $.post("/api/signup", customerInfoObj, function(dbData) {
       //if a customer redirect to the customer landing page
       console.log("dbdata", dbData);
-      if (dbData.type === "customer") {
-        console.log("Customer Information Added");
-        // return user id off of session and if customer send to applicable page
-        location.href = "/user/" + dbData.id;
+      if(dbData !== "sorry suckka that user exists already"){
+        if (dbData.type === "customer") {
+          console.log("Customer Information Added");
+          // return user id off of session and if customer send to applicable page
+          location.href = "/user/" + dbData.id;
+        }
+        //redirect to the artist page
+        else {
+          console.log("Artist Information Added");
+          // return user id off of session and if artist send to applicable page
+          location.href = "/artistProfile/" + dbData.id;
+        }
       }
-      //redirect to the artist page
-      else {
-        console.log("Artist Information Added");
-        // return user id off of session and if artist send to applicable page
-        location.href = "/artistProfile/" + dbData.id;
-      }
+
       //clear form inputs on submit click (only if data posts)
       resetForm();
     });
