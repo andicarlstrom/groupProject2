@@ -68,13 +68,15 @@ $(document).ready(function() {
   // Event Handlers============================================================================
 
   //password field to show or hide password for existing user login, need to get to work
-  $("#showPassword").on("select", function(event) {
+  $("#showPassword").on("change", function(event) {
     event.preventDefault();
     //change the type field on the id loginPassword to "text"
-    if ($("#showPassword").attr("checked") !== "checked") {
-      $("#loginPassword").attr("type", "password");
-    } else {
+    if ($("input[name='show']:checked")) {
       $("#loginPassword").attr("type", "text");
+      //how to get it to go back if unchecked?
+    } else if ($("input[name='show']:not checked")) {
+      console.log("not checked");
+      $("#loginPassword").attr("type", "password");
     }
   });
 
@@ -210,20 +212,17 @@ $(document).ready(function() {
     $.post("/api/signup", customerInfoObj, function(dbData) {
       //if a customer redirect to the customer landing page
       console.log("dbdata", dbData);
-      if(dbData !== "sorry suckka that user exists already"){
-        if (dbData.type === "customer") {
-          console.log("Customer Information Added");
-          // return user id off of session and if customer send to applicable page
-          location.href = "/user/" + dbData.id;
-        }
-        //redirect to the artist page
-        else {
-          console.log("Artist Information Added");
-          // return user id off of session and if artist send to applicable page
-          location.href = "/artistProfile/" + dbData.id;
-        }
+      if (dbData.type === "customer") {
+        console.log("Customer Information Added");
+        // return user id off of session and if customer send to applicable page
+        location.href = "/user/" + dbData.id;
       }
-
+      //redirect to the artist page
+      else {
+        console.log("Artist Information Added");
+        // return user id off of session and if artist send to applicable page
+        location.href = "/artistProfile/" + dbData.id;
+      }
       //clear form inputs on submit click (only if data posts)
       resetForm();
     });
