@@ -1,0 +1,173 @@
+{{!-- Javascript that is collecting the tattoo artists id --}}
+<script>
+    const userId = "{{ id }}"
+</script>
+
+{{!-- Container that holds the tattoo artists information --}}
+<div class="container">
+    <div class="row">
+        <div class="col s12 m6 l7">
+            <div class="tattooArtistDetails">
+                <h2>{{ firstName }} {{ lastName }}</h2>
+
+                <p>{{ location }} {{ city }} {{ state }} {{ zip }}</p>
+                <p>{{ specialization }} </p>
+                <p>{{ pricing }} </p>
+
+            </div>
+        </div>
+    </div>
+
+    {{!-- Photos Container that will hold all of the photos posted by the tattoo artist --}}
+    <div class="photosContainer">
+        {{#if photos}}
+
+        {{#each photos}}
+        <img src="{{ this }}" alt="Tattoo Image" data-target="{{ @index }}" class="tattooArtistsUploadedImages modal-trigger">
+        {{!-- tattoo image modal that displays the tattoo details on click --}}
+        <div class="modal" id="{{ @index }}">
+            <div class="modal-content">
+                <p>TESTING TO SEE IF THIS IS A UNIQUE MODAL {{ @index }}</p>
+                <img class="tattooImageInModal" src="{{ this }}" alt="">
+            </div>
+        </div>
+
+        {{/each}}
+
+        {{else}}
+        {{!-- This sentence displays if the tattoo artist hasn"t posted any photos --}}
+        <p>Text if the images don"t render</p>
+
+        {{/if}}
+    </div>
+
+
+    {{!-- Add Photo Modal --}}
+    <div class="modal" id="addPhotoModal">
+        <div class="modal-content">
+
+
+            <form method="post" enctype="multipart/form-data">
+                <input id="file" class="uploadedPhoto" type="file" accept="image/*">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" id="autocomplete-input" class="autocomplete">
+                                <label class="description" for="autocomplete-input">Description</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="input-field col s12 m6">
+                    <select class="tattooStyle" multiple>
+                        <option value="1">Abstract</option>
+                        <option value="2">Ambigram</option>
+                        <option value="3">American Traditional</option>
+                        <option value="4">Anatomical</option>
+                        <option value="5">Biomechanical</option>
+                        <option value="6">Black and Grey</option>
+                        <option value="7">Blackout</option>
+                        <option value="8">Blackwork</option>
+                        <option value="9">Blast Over</option>
+                        <option value="10">Broken Glass</option>
+                        <option value="11">Paint Brush Stroke</option>
+                        <option value="12">Celtic</option>
+                        <option value="13">Chicano</option>
+                        <option value="14">Dotwork</option>
+                        <option value="15">Geometric</option>
+                        <option value="16">Glitch</option>
+                        <option value="17">Glow in the Dark</option>
+                        <option value="18">UV Ink</option>
+                        <option value="19">Gradient</option>
+                        <option value="20">Graffiti</option>
+                        <option value="21">Hyper Realistic</option>
+                        <option value="22">Inverted</option>
+                        <option value="23">Japanese</option>
+                        <option value="24">Lettering</option>
+                        <option value="25">Line</option>
+                        <option value="26">Mambo/Destrutturato</option>
+                        <option value="27">Mandala</option>
+                        <option value="28">Mayan</option>
+                        <option value="29">Minimalist</option>
+                        <option value="30">Negative Space</option>
+                        <option value="31">Neo Traditional</option>
+                        <option value="32">New School</option>
+                        <option value="33">Norse</option>
+                        <option value="34">Traditional</option>
+                        <option value="35">Tribal</option>
+                        <option value="36">Optical Illusion</option>
+                        <option value="37">Outline</option>
+                        <option value="38">Pinstripe</option>
+                        <option value="39">Pixel</option>
+                        <option value="40">Pointillism</option>
+                        <option value="41">Pop Art</option>
+                        <option value="42">Portrait</option>
+                        <option value="43">Quote/Word</option>
+                        <option value="44">Realism</option>
+                        <option value="45">Silhouette</option>
+                        <option value="46">Sketch</option>
+                        <option value="47">Stained Glass</option>
+                        <option value="48">Surrealism</option>
+                        <option value="49">Torn/Ripped Skin</option>
+                        <option value="50">Trash Polka</option>
+                        <option value="51">Polynesian</option>
+                        <option value="52">Maori</option>
+                        <option value="53">Hawaiian</option>
+                        <option value="54">Watercolor</option>
+                        <option value="55">White Ink</option>
+                        <option value="56">Wood Carving</option>
+                    </select>
+                    <label>Style</label>
+                </div>
+
+                <div class="input-field col s12 m6">
+                    <select id="placement" multiple>
+                        <option value="1">Ankles</option>
+                        <option value="2">Back</option>
+                        <option value="3">Bicep</option>
+                        <option value="4">Bottom</option>
+                        <option value="5">Calf</option>
+                        <option value="6">Chest</option>
+                        <option value="7">Ear</option>
+                        <option value="8">Elbow</option>
+                        <option value="9">Eye Lid</option>
+                        <option value="10">Face</option>
+                        <option value="11">Finger</option>
+                        <option value="12">Forearm</option>
+                        <option value="13">Foot</option>
+                        <option value="14">Groin</option>
+                        <option value="15">Hand</option>
+                        <option value="16">Hip</option>
+                        <option value="17">Knee</option>
+                        <option value="18">Lip</option>
+                        <option value="19">Lower Back</option>
+                        <option value="20">Navel</option>
+                        <option value="21">Neck</option>
+                        <option value="22">Shin</option>
+                        <option value="23">Shoulder</option>
+                        <option value="24">Sternum</option>
+                        <option value="25">Stomach</option>
+                        <option value="26">Thigh</option>
+                        <option value="27">Toe</option>
+                        <option value="28">Upper Back</option>
+                        <option value="29">Wrist</option>
+                    </select>
+                    <label>Placement on Body</label>
+                </div>
+
+            </form>
+
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" id="submit" class="modal-close waves-effect waves-green btn-flat">Submit</a>
+        </div>
+    </div>
+
+
+</div>
+
+<footer></footer>

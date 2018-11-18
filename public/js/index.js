@@ -259,7 +259,7 @@ $(document).ready(function() {
       else {
         console.log("loading artist poage");
         // if artist send to applicable page
-        location.href = "/artistProfile/" + dbData.id;
+        location.href = "/artist-profile/" + dbData.id;
       }
     });
   });
