@@ -1,3 +1,8 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo center">Tatu</a>
+  </div>
+</nav>
 
 {{!-- main page content --}}
 <div class="container">
@@ -13,24 +18,24 @@
   <div class="row">
     <h5>Existing Users</h5>
     {{!-- form input section and submit button --}}
-    <form class="col s12 offset-s2">
+    <form class="col s12 offset-m2">
       <div class="row">
-        <div class="input-field col s8">
+        <div class="input-field col s12 m8">
           <input id="loginEmail" type="text" class="validate" required="" aria-required="true">
           <label for="loginEmail">Email</label>
           <span class="helper-text" data-error="Required"></span>
         </div>
       </div>
       <div class="row">
-        <div class="input-field inline col s6">
+        <div class="input-field inline col s6 m8 l6">
           <input id="loginPassword" type="password" class="validate" required="" aria-required="true">
           <label for="loginPassword">Password</label>
           <span class="helper-text" data-error="Required"></span>
         </div>
-        <div class="input-field inline col s6">
+        <div class="input-field inline col s6 m4">
           <label>
             <input type="checkbox" id="showPassword" class="filled-in" name="show" />
-            <span>Show Password</span>
+            <span>Show</span>
           </label>
         </div>
       </div>
@@ -47,7 +52,7 @@
     {{!-- determines which forms shows --}}
     <div class="input-field col s12">
       <select id="userType">
-        <option value="0" disabled selected>What Best Describes You?</option>
+        <option value="" disabled selected>What Best Describes You?</option>
         <option value="customer">Customer</option>
         <option value="artist">Tattoo Artist</option>
       </select>
@@ -56,50 +61,50 @@
 
   {{!-- this form is for all users to create an account --}}
   <form id="allUsersInfo">
+    <h6>All fields are required</h6>
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s12 m6">
           <input id="firstNameCreate" type="text" class="validate" required="" aria-required="true">
           <label for="firstNameCreate">First Name</label>
           <span class="helper-text" data-error="Required"></span>
         </div>
-        <div class="input-field col s6">
+        <div class="input-field col s12 m6">
           <input id="lastNameCreate" type="text" class="validate" required="" aria-required="true">
           <label for="lastNameCreate">Last Name</label>
           <span class="helper-text" data-error="Required"></span>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s12 m6">
           <input id="phoneNumberCreate" type="text" class="validate" required="" aria-required="true">
           <label for="phoneNumberCreate">Phone Number</label>
+          <span class="helper-text" data-error="Required" data-success="right">XXX-XXX-XXXX</span>
           <span class="helper-text" data-error="Required"></span>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s12 m6">
           <input id="emailCreate" type="email" class="validate" required="" aria-required="true">
           <label for="emailCreate">Email</label>
-          <span class="helper-text" data-error="Required"></span>
+          <span class="helper-text" data-error="Required">This will also be your user name</span>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s12 m6">
           <input id="passwordCreate" type="text" class="validate" required="" aria-required="true">
           <label for="passwordCreate">Password</label>
-          <span class="helper-text" data-error="Required"></span>
+          <span class="helper-text" data-error="Required">8 characters, at least 1 number</span>
         </div>
       </div>
     </form>
     {{!-- form that contains all info for an artist account --}}
     <form id="artistOnlyInfo">
       <div class="row">
-        <div class="input-field col s6">
-          <input id="locationNameCreate" type="text" class="validate required="" aria-required="true"">
+        <div class="input-field col s12 m6">
+          <input id="locationNameCreate" type="text" class="validate" required="" aria-required="true">
           <label for="locationNameCreate">Location Name</label>
           <span class="helper-text" data-error="Required"></span>
         </div>
         <div class="row">
-          <div class="input-field col s6">
+          <div class="input-field col s12 m6">
             <input id="streetCreate" type="text" class="validate" required="" aria-required="true">
             <label for="streetCreate">Street</label>
             <span class="helper-text" data-error="Required"></span>
@@ -111,12 +116,12 @@
             <label for="cityCreate">City</label>
             <span class="helper-text" data-error="Required"></span>
           </div>
-          <div class="input-field col s2">
+          <div class="input-field col s3 m2">
             <input id="stateCreate" type="text" class="validate" required="" aria-required="true">
             <label for="stateCreate">State</label>
             <span class="helper-text" data-error="Required"></span>
           </div>
-          <div class="input-field col s2">
+          <div class="input-field col s3 m2">
             <input id="zipCreate" type="number" class="validate" required="" aria-required="true">
             <label for="zipCreate">Zip</label>
             <span class="helper-text" data-error="Required"></span>
@@ -124,7 +129,7 @@
         </div>
         <div class="row">
           <div class="input-field col s12 m6">
-            <select id="specializationCreate">
+            <select id="specializationCreate" required="">
               <option value="" disabled selected>Choose one...</option>
               <option value="3D">3D</option>
               <option value="abstract">Abstract</option>
@@ -143,18 +148,15 @@
               <option value="watercolor">Watercolor</option>
             </select>
             <label for="specializationCreate">What is your Specialization?</label>
-            {{!-- <input id="specializationCreate" type="text" class="validate" required="" aria-required="true">
-            <span class="helper-text" data-error="Required"></span> --}}
+            <span class="helper-text" data-error="Required"></span>
           </div>
           <div class="input-field col s12 m6">
-            <select id="pricingCreate">
-              <option value="" disabled selected>Choose one...</option>
+            <select id="pricingCreate" required="">
+              <option value="0" disabled selected>Choose one...</option>
               <option value="perHour">Per Hour</option>
               <option value="byPiece">By Piece</option>
             </select>
             <label for="pricingCreate">What is your Pricing Structure?</label>
-            {{!-- <input id="pricingCreate" type="text" class="validate" required="" aria-required="true">
-            <span class="helper-text" data-error="Required"></span> --}}
           </div>
         </div>
     </form>
@@ -162,6 +164,22 @@
 
   <div class="modal-footer">
     <button class="btn waves-effect waves-light" type="submit" id="createAcctSubmit" name="action">Create Account</button>
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="createAcctCancel">Cancel</a>
+    <a href="/" class="modal-close waves-effect waves-green btn-flat" id="createAcctCancel">Cancel</a>
+  </div>
+</div>
+
+{{!-- modal for blank fields --}}
+<div id="errRequiredModal" class="modal">
+  <div class="modal-content">
+    <h4>Oops</h4>
+    <p>All fields are required, please fill in the empty field(s)</p>
+  </div>
+</div>
+
+{{!-- modal for invalid email address entered --}}
+<div id="duplicateEmailModal" class="modal">
+  <div class="modal-content">
+    <h4>Oops</h4>
+    <p>It looks like the email you've entered is already in use. Please enter another.</p>
   </div>
 </div>

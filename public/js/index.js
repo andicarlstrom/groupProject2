@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  //require for hte map log
+  // var fs = require("fs");
+  // var map = require("../../maplogic");
+  // console.log("this is the map " + map);
   //materialize js intialization of components=================================================
 
   //for the modals
@@ -20,13 +24,13 @@ $(document).ready(function() {
 
   //reset the form
   function resetForm() {
-    //show or hid e the applicable fields
+    //show or hide the applicable fields
     $("#custSelectTypeSection").show();
     $("#allUsersInfo").hide();
     $("#artistOnlyInfo").hide();
     $("#createAcctSubmit").hide();
     //reset fields
-    $("#userType").val(" ");
+    // $("#userType").val("");
     $("#firstNameCreate")
       .val("")
       .attr("class", "validate");
@@ -57,12 +61,9 @@ $(document).ready(function() {
     $("#zipCreate")
       .val("")
       .attr("class", "validate");
-    $("#specializationCreate")
-      .val("")
-      .attr("class", "validate");
-    $("#pricingCreate")
-      .val("")
-      .attr("class", "validate");
+    // $("#specializationCreate").val("");
+    // $("#pricingCreate").val("");
+    $("label").attr("class", "");
   }
 
   // Event Handlers============================================================================
@@ -73,7 +74,7 @@ $(document).ready(function() {
     //change the type field on the id loginPassword to "text"
     if ($("input[name='show']:checked")) {
       $("#loginPassword").attr("type", "text");
-      //how to get it to go back if unchecked?
+      //how to get it to go back if unchecked//currently not working
     } else if ($("input[name='show']:not checked")) {
       console.log("not checked");
       $("#loginPassword").attr("type", "password");
@@ -111,9 +112,8 @@ $(document).ready(function() {
         $("#emailCreate").val() === "" ||
         $("#passwordCreate").val() === ""
       ) {
-        alert("empty field");
-        // $("#emptyFieldError").modal("open");
-        //return false;
+        $("#errRequiredModal").modal("open");
+        return false;
         //if no blank fields create the cusotmer only data object
       } else {
         var customerInfoObj = {
@@ -150,19 +150,16 @@ $(document).ready(function() {
         $("#streetCreate").val() === "" ||
         $("#cityCreate").val() === "" ||
         $("#stateCreate").val() === "" ||
-        $("#zipCreate").val() === "" ||
-        $("#specializationCreate").val() === "" ||
-        $("#pricingCreate").val() === ""
+        $("#zipCreate").val() === ""
+        // $("#specializationCreate").val() === "" ||
+        // $("#pricingCreate").val() === ""
       ) {
-        alert("empty field");
-        // $("#emptyFieldError").modal("open");
-        //return false;
-        //if not blanks create customer obj including artist data
+        $("#errRequiredModal").modal("open");
+        return false;
+        //if no blanks create customer obj including artist data
       } else {
         var customerInfoObj = {
-          type: $("#userType")
-            .val()
-            .trim(),
+          type: $("#userType").val(),
           firstName: $("#firstNameCreate")
             .val()
             .trim(),
@@ -179,12 +176,8 @@ $(document).ready(function() {
             .val()
             .trim(),
           artistData: {
-            specialization: $("#specializationCreate")
-              .val()
-              .trim(),
-            pricing: $("#pricingCreate")
-              .val()
-              .trim(),
+            specialization: $("#specializationCreate").val(),
+            pricing: $("#pricingCreate").val(),
             location: $("#locationNameCreate")
               .val()
               .trim(),
@@ -222,8 +215,12 @@ $(document).ready(function() {
         else {
           console.log("Artist Information Added");
           // return user id off of session and if artist send to applicable page
-          location.href = "/artistProfile/" + dbData.id;
+          location.href = "/artist-profile/" + dbData.id;
         }
+      } else {
+        //trigger the modal
+        $("#duplicateEmailModal").modal("open");
+        return false;
       }
 
       //clear form inputs on submit click (only if data posts)
@@ -249,7 +246,7 @@ $(document).ready(function() {
         .trim()
     };
     $.post("/api/login", loginInfo).then(function(dbData) {
-      console.log("this is dbdata " + JSON.stringify(dbData, null, 2));
+      //console.log("this is dbdata " + JSON.stringify(dbData, null, 2));
       if (dbData.type === "customer") {
         console.log("loading customer page");
         // send to applicable page
@@ -257,9 +254,9 @@ $(document).ready(function() {
       }
       //redirect to the artist page
       else {
-        console.log("loading artist poage");
+        console.log("loading artist page");
         // if artist send to applicable page
-        location.href = "/artistProfile/" + dbData.id;
+        location.href = "/artist-profile/" + dbData.id;
       }
     });
   });
