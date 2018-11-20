@@ -4,19 +4,9 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     console.log(req.session);
-    // db.Example.findAll({}).then(function(dbExamples) {
-    //   res.render("index", {
-    //     msg: "Welcome!",
-    //     examples: dbExamples
-    //   });
-    // });
 
-    res.render("index", {
-      msg: "Welcome!",
-      examples: []
-    });
+    res.render("index", {});
   });
-
   //Get artist profile page. Is this necessary based on HTML route for same page above? Will this pull the images?
 
   //HTML route for templating the image form modal.
@@ -38,6 +28,59 @@ module.exports = function(app) {
         res.json(err);
       });
   });
+=======
+  // html route that generates the tattoo artists profile
+  app.get("/artist-profile/:id", function(req, res) {
+    console.log("hit");
+    db.Artist.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Customer]
+    }).then(function(dbArtist, err) {
+      const dbObject = dbArtist.dataValues;
+
+      const {
+        location,
+        address,
+        city,
+        state,
+        zip,
+        pricing,
+        specialization,
+        photos,
+        CustomerId,
+        Customer
+      } = dbObject;
+
+      const { firstName, lastName, type } = Customer.dataValues;
+
+      // console.log("customer.datavalues: ", Customer.dataValues);
+      let showAdd;
+      if (type === "artist") {
+        showAdd = true;
+      } else {
+        showAdd = false;
+      }
+
+      res.render("artistProfile", {
+        location,
+        address,
+        city,
+        state,
+        zip,
+        pricing,
+        specialization,
+        id: CustomerId,
+        firstName,
+        lastName,
+        showAdd: showAdd,
+        photos: photos
+      });
+    });
+  });
+
+  // ----- Here is where the images routes will go -----
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

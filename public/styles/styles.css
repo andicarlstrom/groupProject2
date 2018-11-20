@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
 
 body {
   background-image: url("/images/tattooarms_bgi.jpg");
@@ -7,12 +7,12 @@ body {
 
 nav {
   /* background-color: #17172A; */
-  background-color: #2A303E;
+  background-color: #2a303e;
   width: 100%;
 }
 
 .brand-logo {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
 }
 
 .modal,
@@ -23,6 +23,31 @@ nav {
 .btn {
   background-color: #344743;
   /* background-color: #D6916A; */
+}
+
+h4.plusButton {
+  background-color: #2a303e;
+  margin: 0;
+  float: right;
+  padding-top: 11px;
+  padding-right: 20px;
+}
+
+img.tattooImage {
+  height: 270px;
+  width: 260px;
+}
+
+#tattooArtistDetails {
+  text-align: center;
+}
+
+.tattooImageInModal {
+  width: 100%;
+}
+
+#instructionalComment {
+  margin-top: 10%;
 }
 
 .btn:hover {
@@ -40,20 +65,20 @@ p {
 }
 
 /* this is for the forms */
-.input-field>label,
+.input-field > label,
 .btn-flat {
   color: white;
 }
 
-[type="checkbox"]+span:not(.lever) {
+[type="checkbox"] + span:not(.lever) {
   padding-left: 30px;
 }
 
-[type="checkbox"].filled-in:not(:checked)+span:not(.lever):after {
+[type="checkbox"].filled-in:not(:checked) + span:not(.lever):after {
   border: 1px solid white;
 }
 
-[type="checkbox"].filled-in:checked+span:not(.lever):after {
+[type="checkbox"].filled-in:checked + span:not(.lever):after {
   background-color: #344743;
   border: #344743;
 }
@@ -63,31 +88,31 @@ p {
   color: white;
 }
 
-.dropdown-content li>span {
+.dropdown-content li > span {
   color: maroon;
 }
 
 /* makes the input lines white as well as the text once input */
-input[type=text]:not(.browser-default),
-input[type=email]:not(.browser-default),
-input[type=password]:not(.browser-default) {
-  border-bottom:1px solid white;
+input[type="text"]:not(.browser-default),
+input[type="email"]:not(.browser-default),
+input[type="password"]:not(.browser-default) {
+  border-bottom: 1px solid white;
   color: white;
 }
 
 /* this changes the line color to match the text color (below) and makes the completed font color white */
-input[type=text]:not(.browser-default):focus:not([readonly]),
-input[type=password]:not(.browser-default):focus:not([readonly]),
-input[type=email]:not(.browser-default):focus:not([readonly])  {
+input[type="text"]:not(.browser-default):focus:not([readonly]),
+input[type="password"]:not(.browser-default):focus:not([readonly]),
+input[type="email"]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid maroon;
   box-shadow: 0 1px 0 0 maroon;
   /* color: white; */
 }
 
 /* this changes the color of the label's text on the form */
-input[type="text"]:not(.browser-default):focus:not([readonly])+label,
-input[type="password"]:not(.browser-default):focus:not([readonly])+label,
-input[type="email"]:not(.browser-default):focus:not([readonly])+label {
+input[type="text"]:not(.browser-default):focus:not([readonly]) + label,
+input[type="password"]:not(.browser-default):focus:not([readonly]) + label,
+input[type="email"]:not(.browser-default):focus:not([readonly]) + label {
   color: maroon;
 }
 
@@ -98,5 +123,9 @@ input[type="email"]:not(.browser-default):focus:not([readonly])+label {
   }
   body {
     background-image: url("/images/tattooarms_sm_bgi.jpg");
+  }
+  img.tattooImage {
+    height: 440px;
+    width: 410px;
   }
 }
