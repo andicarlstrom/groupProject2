@@ -7,6 +7,14 @@ module.exports = function(sequelize, DataTypes) {
     description: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    style: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    placement: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
 
@@ -15,10 +23,6 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: {
         allowNull: false
       }
-    });
-
-    Picture.hasMany(models.Tag, {
-      onDelete: "cascade"
     });
   };
   return Picture;

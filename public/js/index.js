@@ -223,6 +223,7 @@ $(document).ready(function() {
           console.log("Artist Information Added");
           // return user id off of session and if artist send to applicable page
           location.href = "/artist-profile/" + dbData.id;
+          console.log("hi");
         }
       }
 
