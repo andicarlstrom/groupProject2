@@ -26,7 +26,7 @@ $(document).ready(function() {
     $("#artistOnlyInfo").hide();
     $("#createAcctSubmit").hide();
     //reset fields
-    // $("#userType").val("");
+    $("#userType").val("");
     $("#firstNameCreate")
       .val("")
       .attr("class", "validate");
@@ -218,7 +218,6 @@ $(document).ready(function() {
         $("#duplicateEmailModal").modal("open");
         return false;
       }
-
       //clear form inputs on submit click (only if data posts)
       resetForm();
     });
@@ -226,6 +225,7 @@ $(document).ready(function() {
 
   //reset form when cancel button is clicked
   $("#createAcctCancel").on("click", function(event) {
+    console.log("cancel button hit");
     event.preventDefault();
     resetForm();
   });

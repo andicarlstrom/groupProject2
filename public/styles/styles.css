@@ -7,13 +7,22 @@ body {
 }
 
 nav {
-  /* background-color: #17172A; */
   background-color: #2a303e;
   width: 100%;
 }
 
 .brand-logo {
   font-family: "Pacifico", cursive;
+}
+
+.container {
+  margin-top: 7%;
+}
+
+h1,
+h5,
+p {
+  text-align: center;
 }
 
 .modal,
@@ -24,6 +33,10 @@ nav {
 .btn {
   background-color: #344743;
   font-family: 'Nunito', sans-serif;
+}
+
+.btn:hover {
+  background-color: grey;
 }
 
 h4.plusButton {
@@ -51,35 +64,21 @@ img.tattooImage {
   margin-top: 10%;
 }
 
-.btn:hover {
-  background-color: grey;
-}
-
-.container {
-  margin-top: 7%;
-}
-
-h1,
-h5,
-p {
-  text-align: center;
-}
-
 /* this is for the forms */
-.input-field > label,
+.input-field>label,
 .btn-flat {
   color: white;
 }
 
-[type="checkbox"] + span:not(.lever) {
+[type="checkbox"]+span:not(.lever) {
   padding-left: 30px;
 }
 
-[type="checkbox"].filled-in:not(:checked) + span:not(.lever):after {
+[type="checkbox"].filled-in:not(:checked)+span:not(.lever):after {
   border: 1px solid white;
 }
 
-[type="checkbox"].filled-in:checked + span:not(.lever):after {
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
   background-color: #344743;
   border: #344743;
 }
@@ -97,7 +96,7 @@ p {
 input[type=text]:not(.browser-default),
 input[type=email]:not(.browser-default),
 input[type=password]:not(.browser-default),
-input[type=number]:not(.browser-default){
+input[type=number]:not(.browser-default) {
   border-bottom:1px solid white;
   color: white;
 }
@@ -120,6 +119,11 @@ input[type=number]:not(.browser-default):focus:not([readonly])+label {
   color: #BF691E;
 }
 
+[type="checkbox"]:checked+span:not(.lever):before {
+  border-right: 2px solid #BF691E;
+  border-bottom: 2px solid #BF691E;
+}
+
 /* valid color */
 .input-field input[type=text].valid,
 .input-field input[type=password].valid,
@@ -140,7 +144,6 @@ input[type=number]:not(.browser-default):focus:not([readonly])+label {
   }
 }
 
-/* adjustments for mobile first */
 @media only screen and (max-width: 411px) {
   body {
     background-image: url("/images/tattooarms_xsm_bgi.jpg");
