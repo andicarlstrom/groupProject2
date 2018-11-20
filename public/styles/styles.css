@@ -105,11 +105,15 @@ input[type=number]:not(.browser-default):focus:not([readonly])+label {
 }
 
 /* adjustments for mobile first */
-/* @media only screen and (max-width: 1024px) {
-  .container {
-    margin-top: 5%;
-  }
+@media only screen and (max-width: 768px) {
   body {
     background-image: url("/images/tattooarms_sm_bgi.jpg");
   }
-} */
+}
+
+/* adjustments for mobile first */
+@media only screen and (max-width: 411px) {
+  body {
+    background-image: url("/images/tattooarms_xsm_bgi.jpg");
+  }
+}

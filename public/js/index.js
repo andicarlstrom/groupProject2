@@ -1,8 +1,4 @@
 $(document).ready(function() {
-  //require for hte map log
-  // var fs = require("fs");
-  // var map = require("../../maplogic");
-  // console.log("this is the map " + map);
   //materialize js intialization of components=================================================
 
   //for the modals

@@ -195,9 +195,9 @@ module.exports = function(app) {
           });
         });
       } else {
-        res.send("sorry suckka that user exists already");;
+        res.send("sorry suckka that user exists already");
       }
-    });;
+    });
     //to store a hased password into the database we need to first salt our password. this will tell bcrypt how many time to pass through the users password to generate the hash
   });
 
