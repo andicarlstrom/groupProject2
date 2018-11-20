@@ -1,4 +1,8 @@
-
+<nav>
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo center">Tatu&#772;</a>
+  </div>
+</nav>
 {{!-- main page content --}}
 <div class="container">
   <div class="row">
@@ -43,19 +47,19 @@
 <div id="createAccountModal" class="modal">
   <div class="modal-content">
     <h4 class="modalHeader">Create New Account</h4>
-  <div class="row" id="custSelectTypeSection">
-    {{!-- determines which forms shows --}}
-    <div class="input-field col s12">
-      <select id="userType">
-        <option value="0" disabled selected>What Best Describes You?</option>
-        <option value="customer">Customer</option>
-        <option value="artist">Tattoo Artist</option>
-      </select>
+    <div class="row" id="custSelectTypeSection">
+      {{!-- determines which forms shows --}}
+      <div class="input-field col s12">
+        <select id="userType">
+          <option value="0" disabled selected>What Best Describes You?</option>
+          <option value="customer">Customer</option>
+          <option value="artist">Tattoo Artist</option>
+        </select>
+      </div>
     </div>
-  </div>
 
-  {{!-- this form is for all users to create an account --}}
-  <form id="allUsersInfo">
+    {{!-- this form is for all users to create an account --}}
+    <form id="allUsersInfo">
       <div class="row">
         <div class="input-field col s6">
           <input id="firstNameCreate" type="text" class="validate" required="" aria-required="true">
@@ -94,7 +98,7 @@
     <form id="artistOnlyInfo">
       <div class="row">
         <div class="input-field col s6">
-          <input id="locationNameCreate" type="text" class="validate required="" aria-required="true"">
+          <input id="locationNameCreate" type="text" class="validate required="" aria-required=" true"">
           <label for="locationNameCreate">Location Name</label>
           <span class="helper-text" data-error="Required"></span>
         </div>
