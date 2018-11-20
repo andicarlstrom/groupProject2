@@ -1,0 +1,130 @@
+{{!-- Javascript that is collecting the user id --}}
+<script>
+    const userId = "{{ id }}"
+</script>
+
+{{!-- Container that holds the search bar --}}
+<br><br><br><br>
+
+<div class="row">
+    <div class="col s12 m6 l7 .input-field">
+        <div class="search bar">
+            <select id="cat">
+                <option value="" disabled selected>Search By Style</option>
+                <option value="3D">3D</option>
+                <option value="Abstract">Abstract</option>
+                <option value="Ambigram">Ambigram</option>
+                <option value="American Traditional">American Traditional</option>
+                <option value="Anatomical">Anatomical</option>
+                <option value="Biomechanical">Biomechanical</option>
+                <option value="Black and Grey">Black and Grey</option>
+                <option value="Blackout">Blackout</option>
+                <option value="Blackwork">Blackwork</option>
+                <option value="Blast Over">Blast Over</option>
+                <option value="Broken Glass">Broken Glass</option>
+                <option value="Paint Brush Stroke">Paint Brush Stroke</option>
+                <option value="Celtic">Celtic</option>
+                <option value="Chicano">Chicano</option>
+                <option value="Dotwork">Dotwork</option>
+                <option value="Geometric">Geometric</option>
+                <option value="Glitch">Glitch</option>
+                <option value="Glow in the Dark">Glow in the Dark</option>
+                <option value="UV Ink">UV Ink</option>
+                <option value="Gradient">Gradient</option>
+                <option value="Graffiti">Graffiti</option>
+                <option value="Hyper Realistic">Hyper Realistic</option>
+                <option value="Inverted">Inverted</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Lettering">Lettering</option>
+                <option value="Line">Line</option>
+                <option value="Mambo/Destrutturato">Mambo/Destrutturato</option>
+                <option value="Mandala">Mandala</option>
+                <option value="Mayan">Mayan</option>
+                <option value="Minimalist">Minimalist</option>
+                <option value="Negative Space">Negative Space</option>
+                <option value="Neo Traditional">Neo Traditional</option>
+                <option value="New School">New School</option>
+                <option value="Norse">Norse</option>
+                <option value="Traditional">Traditional</option>
+                <option value="Tribal">Tribal</option>
+                <option value="Optical Illusion">Optical Illusion</option>
+                <option value="Outline">Outline</option>
+                <option value="Pinstripe">Pinstripe</option>
+                <option value="Pixel">Pixel</option>
+                <option value="Pointillism">Pointillism</option>
+                <option value="Pop Art">Pop Art</option>
+                <option value="Portrait">Portrait</option>
+                <option value="Quote/Word">Quote/Word</option>
+                <option value="Realism">Realism</option>
+                <option value="Silhouette">Silhouette</option>
+                <option value="Sketch">Sketch</option>
+                <option value="Stained Glass">Stained Glass</option>
+                <option value="Surrealism">Surrealism</option>
+                <option value="Torn/Ripped Skin">Torn/Ripped Skin</option>
+                <option value="Trash Polka">Trash Polka</option>
+                <option value="Polynesian">Polynesian</option>
+                <option value="Maori">Maori</option>
+                <option value="Hawaiian">Hawaiian</option>
+                <option value="Watercolor">Watercolor</option>
+                <option value="White Ink">White Ink</option>
+                <option value="Wood Carving">Wood Carving</option>
+
+            </select>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col s12 m6 l7 .input-field">
+            <select id="bod">
+                <option value="" disabled selected>Search By Placement</option>
+                <option value="Ankles">Ankles</option>
+                <option value="Back">Back</option>
+                <option value="Bicep">Bicep</option>
+                <option value="Bottom">Bottom</option>
+                <option value="Calf">Calf</option>
+                <option value="Chest">Chest</option>
+                <option value="Ear">Ear</option>
+                <option value="Elbow">Elbow</option>
+                <option value="Eye Lid">Eye Lid</option>
+                <option value="Face">Face</option>
+                <option value="Finger">Finger</option>
+                <option value="Forearm">Forearm</option>
+                <option value="Foot">Foot</option>
+                <option value="Groin">Groin</option>
+                <option value="Hand">Hand</option>
+                <option value="Hips">Hips</option>
+                <option value="Knee">Knee</option>
+                <option value="Lips">Lips</option>
+                <option value="Lower Back">Lower Back</option>
+                <option value="Navel">Navel</option>
+                <option value="Neck">Neck</option>
+                <option value="Shin">Shin</option>
+                <option value="Shoulder">Shoulder</option>
+                <option value="Sternum">Sternum</option>
+                <option value="Stomach">Stomach</option>
+                <option value="Thigh">Thigh</option>
+                <option value="Toe">Toe</option>
+                <option value="Upper Back">Upper Back</option>
+                <option value="Wrist">Wrist</option>
+            </select>
+
+        </div>
+    </div>
+    <br><br>
+    {{!-- search results--}}
+    <div id="searchResults">
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <p>A bunch of text</p>
+            </div>
+        </div>
+
+
+        <br><br>
+        <div id="row1" class="row"></div>
+        <br><br>
+        <div id="row2" class="row"></div>
+        <br><br>
+        <div id="row3" class="row"></div>
+
+    </div>
