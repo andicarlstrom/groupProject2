@@ -2,26 +2,21 @@
 <script>
     const userId = "{{ id }}"
 </script>
-
 {{!-- Container that holds the tattoo artists information --}}
 <div class="container">
     <div class="row">
         <div class="col s12 m6 l7">
             <div class="tattooArtistDetails">
                 <h2>{{ firstName }} {{ lastName }}</h2>
-
                 <p>{{ location }} {{ city }} {{ state }} {{ zip }}</p>
                 <p>{{ specialization }} </p>
                 <p>{{ pricing }} </p>
-
             </div>
         </div>
     </div>
-
     {{!-- Photos Container that will hold all of the photos posted by the tattoo artist --}}
     <div class="photosContainer">
         {{#if photos}}
-
         {{#each photos}}
         <img src="{{ this }}" alt="Tattoo Image" data-target="{{ @index }}" class="tattooArtistsUploadedImages modal-trigger">
         {{!-- tattoo image modal that displays the tattoo details on click --}}
@@ -31,24 +26,17 @@
                 <img class="tattooImageInModal" src="{{ this }}" alt="">
             </div>
         </div>
-
         {{/each}}
-
         {{else}}
         {{!-- This sentence displays if the tattoo artist hasn"t posted any photos --}}
         <p>Text if the images don"t render</p>
-
         {{/if}}
     </div>
-
-
     {{!-- Add Photo Modal --}}
     <div class="modal" id="addPhotoModal">
         <div class="modal-content">
-
-
             <form method="post" enctype="multipart/form-data">
-                <input id="file" class="uploadedPhoto" type="file" accept="image/*">
+                <input id="file" class="uploadedPhoto" type="url" accept="image/*">
                 <div class="row">
                     <div class="col s12">
                         <div class="row">
@@ -59,115 +47,106 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="input-field col s12 m6">
                     <select class="tattooStyle" multiple>
-                        <option value="1">Abstract</option>
-                        <option value="2">Ambigram</option>
-                        <option value="3">American Traditional</option>
-                        <option value="4">Anatomical</option>
-                        <option value="5">Biomechanical</option>
-                        <option value="6">Black and Grey</option>
-                        <option value="7">Blackout</option>
-                        <option value="8">Blackwork</option>
-                        <option value="9">Blast Over</option>
-                        <option value="10">Broken Glass</option>
-                        <option value="11">Paint Brush Stroke</option>
-                        <option value="12">Celtic</option>
-                        <option value="13">Chicano</option>
-                        <option value="14">Dotwork</option>
-                        <option value="15">Geometric</option>
-                        <option value="16">Glitch</option>
-                        <option value="17">Glow in the Dark</option>
-                        <option value="18">UV Ink</option>
-                        <option value="19">Gradient</option>
-                        <option value="20">Graffiti</option>
-                        <option value="21">Hyper Realistic</option>
-                        <option value="22">Inverted</option>
-                        <option value="23">Japanese</option>
-                        <option value="24">Lettering</option>
-                        <option value="25">Line</option>
-                        <option value="26">Mambo/Destrutturato</option>
-                        <option value="27">Mandala</option>
-                        <option value="28">Mayan</option>
-                        <option value="29">Minimalist</option>
-                        <option value="30">Negative Space</option>
-                        <option value="31">Neo Traditional</option>
-                        <option value="32">New School</option>
-                        <option value="33">Norse</option>
-                        <option value="34">Traditional</option>
-                        <option value="35">Tribal</option>
-                        <option value="36">Optical Illusion</option>
-                        <option value="37">Outline</option>
-                        <option value="38">Pinstripe</option>
-                        <option value="39">Pixel</option>
-                        <option value="40">Pointillism</option>
-                        <option value="41">Pop Art</option>
-                        <option value="42">Portrait</option>
-                        <option value="43">Quote/Word</option>
-                        <option value="44">Realism</option>
-                        <option value="45">Silhouette</option>
-                        <option value="46">Sketch</option>
-                        <option value="47">Stained Glass</option>
-                        <option value="48">Surrealism</option>
-                        <option value="49">Torn/Ripped Skin</option>
-                        <option value="50">Trash Polka</option>
-                        <option value="51">Polynesian</option>
-                        <option value="52">Maori</option>
-                        <option value="53">Hawaiian</option>
-                        <option value="54">Watercolor</option>
-                        <option value="55">White Ink</option>
-                        <option value="56">Wood Carving</option>
+                        <option value="Abstract">Abstract</option>
+                        <option value="Ambigram">Ambigram</option>
+                        <option value="American Traditional">American Traditional</option>
+                        <option value="Anatomical">Anatomical</option>
+                        <option value="Biomechanical">Biomechanical</option>
+                        <option value="Black and Grey">Black and Grey</option>
+                        <option value="Blackout">Blackout</option>
+                        <option value="Blackwork">Blackwork</option>
+                        <option value="Blast Over">Blast Over</option>
+                        <option value="Broken Glass">Broken Glass</option>
+                        <option value="Paint Brush Stroke">Paint Brush Stroke</option>
+                        <option value="Celtic">Celtic</option>
+                        <option value="Chicano">Chicano</option>
+                        <option value="Dotwork">Dotwork</option>
+                        <option value="Geometric">Geometric</option>
+                        <option value="Glitch">Glitch</option>
+                        <option value="Glow in the Dark">Glow in the Dark</option>
+                        <option value="UV Ink">UV Ink</option>
+                        <option value="Gradient">Gradient</option>
+                        <option value="Graffiti">Graffiti</option>
+                        <option value="Hyper Realistic">Hyper Realistic</option>
+                        <option value="Inverted">Inverted</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Lettering">Lettering</option>
+                        <option value="Line">Line</option>
+                        <option value="Mambo/Destrutturato">Mambo/Destrutturato</option>
+                        <option value="Mandala">Mandala</option>
+                        <option value="Mayan">Mayan</option>
+                        <option value="Minimalist">Minimalist</option>
+                        <option value="Negative Space">Negative Space</option>
+                        <option value="Neo Traditional">Neo Traditional</option>
+                        <option value="New School">New School</option>
+                        <option value="Norse">Norse</option>
+                        <option value="Traditional">Traditional</option>
+                        <option value="Tribal">Tribal</option>
+                        <option value="Optical Illusion">Optical Illusion</option>
+                        <option value="Outline">Outline</option>
+                        <option value="Pinstripe">Pinstripe</option>
+                        <option value="Pixel">Pixel</option>
+                        <option value="Pointillism">Pointillism</option>
+                        <option value="Pop Art">Pop Art</option>
+                        <option value="Portrait">Portrait</option>
+                        <option value="Quote/Word">Quote/Word</option>
+                        <option value="Realism">Realism</option>
+                        <option value="Silhouette">Silhouette</option>
+                        <option value="Sketch">Sketch</option>
+                        <option value="Stained Glass">Stained Glass</option>
+                        <option value="Surrealism">Surrealism</option>
+                        <option value="Torn/Ripped Skin">Torn/Ripped Skin</option>
+                        <option value="Trash Polka">Trash Polka</option>
+                        <option value="Polynesian">Polynesian</option>
+                        <option value="Maori">Maori</option>
+                        <option value="Hawaiian">Hawaiian</option>
+                        <option value="Watercolor">Watercolor</option>
+                        <option value="White Ink">White Ink</option>
+                        <option value="Wood Carving">Wood Carving</option>
                     </select>
                     <label>Style</label>
                 </div>
-
                 <div class="input-field col s12 m6">
                     <select id="placement" multiple>
-                        <option value="1">Ankles</option>
-                        <option value="2">Back</option>
-                        <option value="3">Bicep</option>
-                        <option value="4">Bottom</option>
-                        <option value="5">Calf</option>
-                        <option value="6">Chest</option>
-                        <option value="7">Ear</option>
-                        <option value="8">Elbow</option>
-                        <option value="9">Eye Lid</option>
-                        <option value="10">Face</option>
-                        <option value="11">Finger</option>
-                        <option value="12">Forearm</option>
-                        <option value="13">Foot</option>
-                        <option value="14">Groin</option>
-                        <option value="15">Hand</option>
-                        <option value="16">Hip</option>
-                        <option value="17">Knee</option>
-                        <option value="18">Lip</option>
-                        <option value="19">Lower Back</option>
-                        <option value="20">Navel</option>
-                        <option value="21">Neck</option>
-                        <option value="22">Shin</option>
-                        <option value="23">Shoulder</option>
-                        <option value="24">Sternum</option>
-                        <option value="25">Stomach</option>
-                        <option value="26">Thigh</option>
-                        <option value="27">Toe</option>
-                        <option value="28">Upper Back</option>
-                        <option value="29">Wrist</option>
+                        <option value="Ankles">Ankles</option>
+                        <option value="Back">Back</option>
+                        <option value="Bicep">Bicep</option>
+                        <option value="Bottom">Bottom</option>
+                        <option value="Calf">Calf</option>
+                        <option value="Chest">Chest</option>
+                        <option value="Ear">Ear</option>
+                        <option value="Elbow">Elbow</option>
+                        <option value="Eye Lid">Eye Lid</option>
+                        <option value="Face">Face</option>
+                        <option value="Finger">Finger</option>
+                        <option value="Forearm">Forearm</option>
+                        <option value="Foot">Foot</option>
+                        <option value="Groin">Groin</option>
+                        <option value="Hand">Hand</option>
+                        <option value="Hip">Hip</option>
+                        <option value="Knee">Knee</option>
+                        <option value="Lip">Lip</option>
+                        <option value="Lower Back">Lower Back</option>
+                        <option value="Navel">Navel</option>
+                        <option value="Neck">Neck</option>
+                        <option value="Shin">Shin</option>
+                        <option value="Shoulder">Shoulder</option>
+                        <option value="Sternum">Sternum</option>
+                        <option value="Stomach">Stomach</option>
+                        <option value="Thigh">Thigh</option>
+                        <option value="Toe">Toe</option>
+                        <option value="Upper Back">Upper Back</option>
+                        <option value="Wrist">Wrist</option>
                     </select>
                     <label>Placement on Body</label>
                 </div>
-
             </form>
-
-
         </div>
         <div class="modal-footer">
             <a href="#!" id="submit" class="modal-close waves-effect waves-green btn-flat">Submit</a>
         </div>
     </div>
-
-
 </div>
-
 <footer></footer>

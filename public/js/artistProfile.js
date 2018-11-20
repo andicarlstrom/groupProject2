@@ -8,7 +8,8 @@ $(document).ready(function() {
 
   function submitPhotoToDB(event) {
     event.preventDefault();
-    var artistID = userId;
+    var artistId = userId;
+    console.log(artistId);
 
     var newPhoto = {
       file: $(".uploadedPhoto").val(),
@@ -19,9 +20,11 @@ $(document).ready(function() {
       placement: $("#placement").val()
     };
 
-    $.post(`/api/image-form/${artistID}`, {
+    $.post("/api/image-form/" + artistId, {
       newPhoto
     }).then(function() {
+      console.log(newPhoto);
+      alert("Working");
       location.reload();
     });
   }
