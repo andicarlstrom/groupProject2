@@ -27,7 +27,7 @@ module.exports = function(app) {
         res.json(err);
       });
   });
-=======
+
   // html route that generates the tattoo artists profile
   app.get("/artist-profile/:id", function(req, res) {
     console.log("hit");
