@@ -8,12 +8,12 @@ body {
 
 nav {
   /* background-color: #17172A; */
-  background-color: #2A303E;
+  background-color: #2a303e;
   width: 100%;
 }
 
 .brand-logo {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
 }
 
 .modal,
@@ -24,6 +24,31 @@ nav {
 .btn {
   background-color: #344743;
   font-family: 'Nunito', sans-serif;
+}
+
+h4.plusButton {
+  background-color: #2a303e;
+  margin: 0;
+  float: right;
+  padding-top: 11px;
+  padding-right: 20px;
+}
+
+img.tattooImage {
+  height: 270px;
+  width: 260px;
+}
+
+#tattooArtistDetails {
+  text-align: center;
+}
+
+.tattooImageInModal {
+  width: 100%;
+}
+
+#instructionalComment {
+  margin-top: 10%;
 }
 
 .btn:hover {
@@ -41,20 +66,20 @@ p {
 }
 
 /* this is for the forms */
-.input-field>label,
+.input-field > label,
 .btn-flat {
   color: white;
 }
 
-[type="checkbox"]+span:not(.lever) {
+[type="checkbox"] + span:not(.lever) {
   padding-left: 30px;
 }
 
-[type="checkbox"].filled-in:not(:checked)+span:not(.lever):after {
+[type="checkbox"].filled-in:not(:checked) + span:not(.lever):after {
   border: 1px solid white;
 }
 
-[type="checkbox"].filled-in:checked+span:not(.lever):after {
+[type="checkbox"].filled-in:checked + span:not(.lever):after {
   background-color: #344743;
   border: #344743;
 }
@@ -109,6 +134,10 @@ input[type=number]:not(.browser-default):focus:not([readonly])+label {
   body {
     background-image: url("/images/tattooarms_sm_bgi.jpg");
   }
+  img.tattooImage {
+    height: 440px;
+    width: 410px;
+  }
 }
 
 /* adjustments for mobile first */
@@ -117,3 +146,5 @@ input[type=number]:not(.browser-default):focus:not([readonly])+label {
     background-image: url("/images/tattooarms_xsm_bgi.jpg");
   }
 }
+  
+
