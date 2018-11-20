@@ -1,22 +1,21 @@
 "use strict";
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.*/
-      return queryInterface.bulkInsert("Pictures", [{
-        link: "https://i.ytimg.com/vi/Iu1IsdIbC7M/hqdefault.jpg",
-        description: "Peacock Feather",
+      return queryInterface.bulkInsert("Tags", [{
+        style: "New School",
+        bodypart: "Forearm",
         createdAt : new Date(),
         updatedAt : new Date(),
-        ArtistId: 1
+        PictureId: 1
       }, {
-        link: "https://i.ytimg.com/vi/DHiQzANKPy0/maxresdefault.jpg",
-        description: "Tribal Pattern",
+        style: "Tribal",
+        bodypart: "Chest",
         createdAt : new Date(),
         updatedAt : new Date(),
-        ArtistId: 1
+        PictureId: 2
       }], {});
   },
   down: (queryInterface, Sequelize) => {
@@ -25,6 +24,6 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example: */
-      return queryInterface.bulkDelete("Pictures", null, {});
+      return queryInterface.bulkDelete("Tags", null, {});
   }
 };
