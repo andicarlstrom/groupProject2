@@ -7,11 +7,7 @@
   <div class="nav-wrapper">
     <a href="/" class="brand-logo center">Tatu</a>
 
-    {{#if showAdd}}
     <h4 data-target="addPhotoModal" class="plusButton modal-trigger" id="addPhoto">+</h4>
-    {{!-- <button data-target="addPhotoModal" class="btn plusButton modal-trigger" id="addPhoto">+</button>
-    --}}
-    {{/if}}
   </div>
 </nav>
 
@@ -34,33 +30,33 @@
     {{!-- Photos Container that will hold all of the photos posted by the tattoo artist --}}
     <div id="photosContainer">
       {{#if photos}}
-        {{#each photos}}
-        <div class='col s12 m6 l3'>
-          <img src="{{ this }}" alt="Tattoo Image" data-target="{{ @index }}" class="tattooImage modal-trigger responsive-img">
-          {{!-- tattoo image modal that displays the tattoo details on click --}}
-          <div class="modal" id="{{ @index }}">
-            <div class="modal-content">
-              <div class='row'>
-                <div class='col l12'>
-                  <p>{{ description }}</p>
-                  <p>{{ style }}</p>
-                  <p>{{ placement }}</p>
-                </div>
+      {{#each photos}}
+      <div class='col s12 m6 l3'>
+        <img src="{{ this }}" alt="Tattoo Image" data-target="{{ @index }}" class="tattooImage modal-trigger responsive-img">
+        {{!-- tattoo image modal that displays the tattoo details on click --}}
+        <div class="modal" id="{{ @index }}">
+          <div class="modal-content">
+            <div class='row'>
+              <div class='col l12'>
+                <p>{{ description }}</p>
+                <p>{{ style }}</p>
+                <p>{{ placement }}</p>
               </div>
+            </div>
 
-              <div class='row'>
-                <div class='col s12 m12 l12'>
-                  <img class="tattooImageInModal responsive-img" src="{{ this }}" alt="">
-                </div>
+            <div class='row'>
+              <div class='col s12 m12 l12'>
+                <img class="tattooImageInModal responsive-img" src="{{ this }}" alt="">
               </div>
             </div>
           </div>
         </div>
-        {{/each}}
+      </div>
+      {{/each}}
 
       {{else}}
-        {{!-- This sentence displays if the tattoo artist hasn"t posted any photos --}}
-        <h5 id='instructionalComment'>PRESS THE + BUTTON TO ADD A PHOTO</h5>
+      {{!-- This sentence displays if the tattoo artist hasn"t posted any photos --}}
+      <h5 id='instructionalComment'>PRESS THE + BUTTON TO ADD A PHOTO</h5>
       {{/if}}
     </div>
   </div>

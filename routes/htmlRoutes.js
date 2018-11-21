@@ -37,6 +37,7 @@ module.exports = function(app) {
       },
       include: [db.Customer]
     }).then(function(dbArtist, err) {
+      console.log(dbArtist);
       const dbObject = dbArtist.dataValues;
 
       const {
@@ -53,14 +54,6 @@ module.exports = function(app) {
       } = dbObject;
 
       const { firstName, lastName, type } = Customer.dataValues;
-
-      // console.log("customer.datavalues: ", Customer.dataValues);
-      let showAdd;
-      if (type === "artist") {
-        showAdd = true;
-      } else {
-        showAdd = false;
-      }
 
       res.render("artistProfile", {
         location,
