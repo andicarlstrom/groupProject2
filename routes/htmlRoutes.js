@@ -1,10 +1,9 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
+  // Load index/login page
   app.get("/", function(req, res) {
     console.log(req.session);
-
     res.render("index", {});
   });
   //Get artist profile page. Is this necessary based on HTML route for same page above? Will this pull the images?
@@ -28,7 +27,7 @@ module.exports = function(app) {
         res.json(err);
       });
   });
-=======
+
   // html route that generates the tattoo artists profile
   app.get("/artist-profile/:id", function(req, res) {
     console.log("hit");

@@ -79,7 +79,7 @@ module.exports = function(app) {
                 }
               };
             }
-            //here the session's user object is updated with the users data. we can hit our /session endpoing witha  get request from the front end and get our user object.
+            //here the session's user object is updated with the users data. we can hit our /session endpoing with a get request from the front end and get our user object.
             req.session.customer = userObj;
             //we update the loggedIn key to have a true value. we can use this value on the fron end to see if the user is logged in or not.
             req.session.customer.loggedIn = true;
@@ -125,8 +125,8 @@ module.exports = function(app) {
       where: {
         email: req.body.email
       }
-    }).then(function(userCheck){
-      if(!userCheck && typeof userCheck === 'object'){
+    }).then(function(userCheck) {
+      if (!userCheck && typeof userCheck === "object") {
         bcrypt.genSalt(10, function(err, salt) {
           //the bcrypt hash method will then
           bcrypt.hash(req.body.password, salt, function(err, hashedPassword) {
@@ -194,12 +194,11 @@ module.exports = function(app) {
             }
           });
         });
-      }else{
-        res.send("sorry suckka that user exists already")
+      } else {
+        res.send("sorry suckka that user exists already");
       }
-    })
+    });
     //to store a hased password into the database we need to first salt our password. this will tell bcrypt how many time to pass through the users password to generate the hash
-
   });
 
   //get user info endpoint via query params

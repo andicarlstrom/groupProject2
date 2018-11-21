@@ -1,12 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Pacifico");
+@import url('https://fonts.googleapis.com/css?family=Nunito|Pacifico');
 
 body {
   background-image: url("/images/tattooarms_bgi.jpg");
+  font-family: 'Nunito', sans-serif;
   color: white;
 }
 
 nav {
-  /* background-color: #17172A; */
   background-color: #2a303e;
   width: 100%;
 }
@@ -15,14 +15,28 @@ nav {
   font-family: "Pacifico", cursive;
 }
 
+.container {
+  margin-top: 7%;
+}
+
+h1,
+h5,
+p {
+  text-align: center;
+}
+
 .modal,
 .modal .modal-footer {
-  background-color: grey;
+  background-color: #333A4B;
 }
 
 .btn {
   background-color: #344743;
-  /* background-color: #D6916A; */
+  font-family: 'Nunito', sans-serif;
+}
+
+.btn:hover {
+  background-color: grey;
 }
 
 h4.plusButton {
@@ -50,35 +64,21 @@ img.tattooImage {
   margin-top: 10%;
 }
 
-.btn:hover {
-  background-color: grey;
-}
-
-.container {
-  margin-top: 7%;
-}
-
-h1,
-h5,
-p {
-  text-align: center;
-}
-
 /* this is for the forms */
-.input-field > label,
+.input-field>label,
 .btn-flat {
   color: white;
 }
 
-[type="checkbox"] + span:not(.lever) {
+[type="checkbox"]+span:not(.lever) {
   padding-left: 30px;
 }
 
-[type="checkbox"].filled-in:not(:checked) + span:not(.lever):after {
+[type="checkbox"].filled-in:not(:checked)+span:not(.lever):after {
   border: 1px solid white;
 }
 
-[type="checkbox"].filled-in:checked + span:not(.lever):after {
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
   background-color: #344743;
   border: #344743;
 }
@@ -88,39 +88,53 @@ p {
   color: white;
 }
 
-.dropdown-content li > span {
-  color: maroon;
+.dropdown-content li>span {
+  color: #BF691E;
 }
 
 /* makes the input lines white as well as the text once input */
-input[type="text"]:not(.browser-default),
-input[type="email"]:not(.browser-default),
-input[type="password"]:not(.browser-default) {
-  border-bottom: 1px solid white;
+input[type=text]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=number]:not(.browser-default) {
+  border-bottom:1px solid white;
   color: white;
 }
 
 /* this changes the line color to match the text color (below) and makes the completed font color white */
-input[type="text"]:not(.browser-default):focus:not([readonly]),
-input[type="password"]:not(.browser-default):focus:not([readonly]),
-input[type="email"]:not(.browser-default):focus:not([readonly]) {
-  border-bottom: 1px solid maroon;
-  box-shadow: 0 1px 0 0 maroon;
-  /* color: white; */
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+.select-wrapper input.select-dropdown:focus  {
+  border-bottom: 1px solid #BF691E;
+  box-shadow: 0 1px 0 0 #BF691E;
 }
 
 /* this changes the color of the label's text on the form */
-input[type="text"]:not(.browser-default):focus:not([readonly]) + label,
-input[type="password"]:not(.browser-default):focus:not([readonly]) + label,
-input[type="email"]:not(.browser-default):focus:not([readonly]) + label {
-  color: maroon;
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+input[type=password]:not(.browser-default):focus:not([readonly])+label,
+input[type=email]:not(.browser-default):focus:not([readonly])+label,
+input[type=number]:not(.browser-default):focus:not([readonly])+label {
+  color: #BF691E;
+}
+
+[type="checkbox"]:checked+span:not(.lever):before {
+  border-right: 2px solid #BF691E;
+  border-bottom: 2px solid #BF691E;
+}
+
+/* valid color */
+.input-field input[type=text].valid,
+.input-field input[type=password].valid,
+.input-field input[type=email].valid,
+.input-field input[type=number].valid {
+  border-bottom: 1px solid white;
+  box-shadow: 0 1px 0 0 white;
 }
 
 /* adjustments for mobile first */
-@media only screen and (max-width: 992px) {
-  .container {
-    margin-top: 15%;
-  }
+@media only screen and (max-width: 768px) {
   body {
     background-image: url("/images/tattooarms_sm_bgi.jpg");
   }
@@ -129,3 +143,11 @@ input[type="email"]:not(.browser-default):focus:not([readonly]) + label {
     width: 410px;
   }
 }
+
+@media only screen and (max-width: 411px) {
+  body {
+    background-image: url("/images/tattooarms_xsm_bgi.jpg");
+  }
+}
+  
+

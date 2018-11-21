@@ -17,7 +17,7 @@ function appendPresearch(obj) {
     div2.attr("class", "card");
     var div3 = $("<div>");
     div3.attr("class", "col s6");
-    var br = $("<br>");
+    // var br = $("<br>");
     div4 = $("<div>");
     div4.attr("class", "card-action black text-white");
 
@@ -119,7 +119,7 @@ function search(selected, obj) {
       div2.attr("class", "card");
       var div3 = $("<div>");
       div3.attr("class", "col s8");
-      var br = $("<br>");
+      // var br = $("<br>");
       div4 = $("<div>");
       div4.attr("class", "row");
       div4.attr("id", "row" + y);
