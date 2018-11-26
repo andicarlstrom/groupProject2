@@ -1,6 +1,7 @@
-$.get("/api/search/thigh", function(data) {
+$.get("/api/style/Japanese", function(data) {
   console.log(data);
 });
+console.log("Page Loaded");
 
 var r = 1;
 function appendPresearch(obj) {
@@ -27,46 +28,18 @@ function appendPresearch(obj) {
     div2.appendTo(div3);
     div4.appendTo(div2);
     div3.appendTo($("#row" + r));
+    img.on("click", function() {
+      $("#searchResults").html("");
+      $.get("/api/style/" + obj[0].style, function(data) {
+        search(data);
+      });
+    });
   }
 }
-
-var example = [
-  {
-    url:
-      "https://images.unsplash.com/photo-1473106995954-101fc128abc3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0ddfb9b9baf94385db2191b9b3ef1e07&auto=format&fit=crop&w=1650&q=80",
-    tag: "Wrist"
-  },
-  {
-    url:
-      "https://images.unsplash.com/photo-1473106995954-101fc128abc3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0ddfb9b9baf94385db2191b9b3ef1e07&auto=format&fit=crop&w=1650&q=80",
-    tag: "Wrist"
-  },
-  {
-    url:
-      "https://images.unsplash.com/photo-1473106995954-101fc128abc3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0ddfb9b9baf94385db2191b9b3ef1e07&auto=format&fit=crop&w=1650&q=80",
-    tag: "Wrist"
-  },
-  {
-    url:
-      "https://images.unsplash.com/photo-1473106995954-101fc128abc3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0ddfb9b9baf94385db2191b9b3ef1e07&auto=format&fit=crop&w=1650&q=80",
-    tag: "Wrist"
-  },
-  {
-    url:
-      "https://images.unsplash.com/photo-1473106995954-101fc128abc3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0ddfb9b9baf94385db2191b9b3ef1e07&auto=format&fit=crop&w=1650&q=80",
-    tag: "Wrist"
-  },
-  {
-    url:
-      "https://images.unsplash.com/photo-1473106995954-101fc128abc3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0ddfb9b9baf94385db2191b9b3ef1e07&auto=format&fit=crop&w=1650&q=80",
-    tag: "Wrist"
-  }
-];
 
 $(document).ready(function() {
   $(".modal").modal();
   $.get("/api/user", function(data) {
-    console.log(data[0].file);
     appendPresearch(data);
   });
 
@@ -76,18 +49,22 @@ $(document).ready(function() {
     selected = $("#cat").val();
     console.log(selected);
     $("#searchResults").html("");
-    search(selected, example);
+    $.get("/api/style/" + selected, function(data) {
+      search(data);
+    });
   });
 
   $("#bod").on("change", function() {
     selected = $("#bod").val();
     console.log(selected);
     $("#searchResults").html("");
-    search(selected, example);
+    $.get("/api/placement/" + selected, function(data) {
+      search(data);
+    });
   });
 });
 
-function search(selected, obj) {
+function search(obj) {
   var placement;
   var y = 0;
   console.log(obj.length);
@@ -108,7 +85,7 @@ function search(selected, obj) {
       a.attr("class", "waves-effect waves-light btn  modal-trigger black");
       a.attr("href", "#modal" + x);
       var img = $("<img>");
-      img.attr("src", obj[x].url);
+      img.attr("src", obj[x].file);
 
       img.attr("class", "materialboxed");
 
@@ -145,7 +122,7 @@ function search(selected, obj) {
       a.attr("class", "waves-effect waves-light btn  black modal-trigger");
       a.attr("href", "#modal" + x);
       var img = $("<img>");
-      img.attr("src", obj[x].url);
+      img.attr("src", obj[x].file);
       img.attr("class", "materialboxed");
       var div1 = $("<div>");
       div1.attr("class", "card-image black");

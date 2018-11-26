@@ -29,6 +29,35 @@ module.exports = function(app) {
     });
 });
 
+app.get("/api/style/:query", function(req, res) {
+  db.Picture.findAll({
+    where: {
+      style: req.params.query
+    }
+  })
+    .then(function(dbPicture) {
+      res.json(dbPicture);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
+
+app.get("/api/placement/:query", function(req, res) {
+  db.Picture.findAll({
+    where: {
+      placement: req.params.query
+
+    }
+  })
+    .then(function(dbPicture) {
+      res.json(dbPicture);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
+
 app.post("/api/image-form/:id", function(req, res) {
   console.log("Image hit");
   var newImage = req.body;
@@ -58,32 +87,7 @@ app.post("/api/image-form/:id", function(req, res) {
 
   });
 
-  //Get for search landing page. Frontend to loop through and populate the six images?
-  app.get("/api/search/", function(req, res) {
-    db.Picture.findAll({
-      include: [db.Tag]
-    })
-      .then(function(dbPicture) {
-        res.json(dbPicture);
-      })
-      .catch(function(err) {
-        res.json(err);
-      });
-  });
 
-  //Get for search results. Is this the proper parameter to use here for a general search of the Tag table, and including the Picture table as well?
-  app.get("/api/search/:query", function(req, res) {
-    var query = req.body.query;
-    db.Picture.findAll({
-     attributes: [query]
-      })
-      .then(function(dbTag) {
-        res.json(dbTag);
-      })
-      .catch(function(err) {
-        res.json(err);
-      });
-  });
 
   app.get("/artist-profile/:id", function(req, res) {
     // console.log("hit");
@@ -124,19 +128,4 @@ app.post("/api/image-form/:id", function(req, res) {
     });
   });
 
-  //Get info for selected image from search page. Is id the proper parameter to use for a general search in the Picture table?
-  app.get("/api/search/image/:id", function(req, res) {
-    db.Picture.findOne({
-      where: {
-        id: req.params.id
-      },
-      include: [db.Tag]
-    })
-      .then(function(dbPicture) {
-        res.json(dbPicture);
-      })
-      .catch(function(err) {
-        res.json(err);
-      });
-  });
 };
